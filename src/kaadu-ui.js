@@ -1,5 +1,6 @@
 export function enableStickyHeader(offset = 50) {
     const header = document.getElementById("header");
+    document.documentElement.style.scrollPaddingTop = `${offset + 60}px`;
     window.addEventListener("scroll", () => {
         document.body.classList.remove('nav-open');
         const currentScroll = window.pageYOffset;
