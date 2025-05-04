@@ -17,7 +17,7 @@ export function enableStickyHeader(offset = 50) {
 }
 
 /**
- * Enables a hamburger menu that toggles navigation visibility.
+ * Enables a hamburger menu that toggles the visibility of the navigation menu.
  */
 export function enableHamburgerMenu() {
     const hamburgerMenu = document.getElementById('hamburgerMenu');
@@ -36,8 +36,8 @@ export function enableHamburgerMenu() {
  * Creates an expandable UI component with a button and a collapsible panel.
  * @param {HTMLElement[]} buttonContents - Array of elements to be added to the button.
  * @param {HTMLElement} panelContent - The content to display in the collapsible panel.
- * @param {string} buttonClass - Additional CSS class for the button.
- * @returns {HTMLElement} - The created expander element.
+ * @param {string} buttonClass - Additional CSS class to style the button.
+ * @returns {HTMLElement} - The created expander element containing the button and panel.
  */
 export function createExpander(buttonContents, panelContent, buttonClass) {
     const content = document.createElement('div');
@@ -62,9 +62,9 @@ export function createExpander(buttonContents, panelContent, buttonClass) {
 
 /**
  * Adds a key-value row to a table.
- * @param {HTMLTableElement} table - The table to which the row will be added.
- * @param {string} label - The label for the key.
- * @param {HTMLElement} value - The value as an HTML element.
+ * @param {HTMLTableElement} table - The table to which the row will be appended.
+ * @param {string} label - The label for the key (displayed in the first cell).
+ * @param {HTMLElement} value - The value as an HTML element (displayed in the second cell).
  */
 export function addKeyValueRowToTable(table, label, value) {
     const row = document.createElement('tr');
@@ -84,17 +84,25 @@ export function addKeyValueRowToTable(table, label, value) {
 
 /**
  * Creates a table with key-value pairs from a JSON object.
- * @param {Object} json - The JSON object containing key-value pairs.
- * @param {Function} valuefun - A function to transform the value into an HTML element.
- * @returns {HTMLTableElement} - The created table element.
+ * @param {Object} obj - The object containing key-value pairs.
+ * @param {Function} [valuefun=null] - A function to transform each value into an HTML element.
+ * @returns {HTMLTableElement} - The created table element populated with key-value rows.
  */
-export function createKeyValueTable(json, valuefun) {
+export function createKeyValueTable(obj, valuefun = null) {
     const infoTable = document.createElement('table');
     infoTable.className = 'info-table';
 
-    for (const [key, val] of Object.entries(json)) {
+    for (const [key, val] of Object.entries(obj)) {
         const label = key.charAt(0).toUpperCase() + key.slice(1); // Capitalize the first letter of the key
-        const value = valuefun(val);
+
+        let value;
+        if (valuefun) {
+            value = valuefun(val)
+        } else {
+            value = document.createElement('span');
+            value.textContent = val;
+        }
+
         addKeyValueRowToTable(infoTable, label, value);
     }
 
@@ -102,7 +110,7 @@ export function createKeyValueTable(json, valuefun) {
 }
 
 /**
- * Sets up a message popup element in the DOM.
+ * Sets up a message popup element in the DOM. The popup includes a close button and a text area for displaying messages.
  */
 export function setupMessagePopup() {
     const messagePopup = document.createElement('div');
@@ -136,7 +144,7 @@ export function setupMessagePopup() {
 
 /**
  * Displays a message in the popup.
- * @param {string} message - The message to display in the popup.
+ * @param {string} message - The message to display inside the popup.
  */
 export function showMessagePopup(message) {
     const messageText = document.getElementById('popupText');
