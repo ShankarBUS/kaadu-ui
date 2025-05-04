@@ -25,6 +25,27 @@ export function enableHamburgerMenu() {
     });
 }
 
+export function createExpander(buttonContents, panelContent, buttonClass) {
+    const content = document.createElement('div');
+    content.className = 'expander-item-content';
+    content.appendChild(panelContent);
+
+    const button = document.createElement('button');
+    button.className = `expander-button ${buttonClass}`;
+    buttonContents.forEach(e => {
+        button.appendChild(e);
+    });
+    button.addEventListener('click', () => {
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    });
+
+    const item = document.createElement('div');
+    item.className = 'expander-item';
+    item.appendChild(button);
+    item.appendChild(content);
+    return item;
+}
+
 export function setupMessagePopup() {
     const messagePopup = document.createElement('div');
     messagePopup.id = 'messagePopup';
