@@ -521,6 +521,15 @@ button:hover .svg-path {
     animation: indeterminateAnimation 1.5s infinite linear;
 }
 
+footer a {
+    padding: unset;
+    border-radius: unset;
+}
+
+footer a:hover {
+    background-color: unset;
+}
+
 @keyframes indeterminateAnimation {
     0% {
         transform: translateX(0) scaleX(0);
