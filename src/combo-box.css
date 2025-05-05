@@ -1,0 +1,72 @@
+.combo-box {
+    position: relative;
+    min-width: 120px;
+}
+
+.combo-box-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.combo-box-text {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.combo-box-chevron {
+    font-size: 12px;
+    pointer-events: none;
+    transition: transform var(--animation-duration) var(--animation-ease);
+}
+
+.combo-box.open .combo-box-chevron {
+    transform: rotate(180deg);
+}
+
+.combo-box-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    right: 0px;
+    max-height: 200px;
+    overflow-y: auto;
+    backdrop-filter: var(--blur-effect);
+    display: none;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 var(--control-corner-radius) var(--control-corner-radius);
+    background-color: var(--panel-background);
+    color: var(--text-color);
+    animation: slideDown var(--animation-duration) var(--animation-ease);
+    margin-top: calc(-1 * var(--control-corner-radius));
+    padding-top: calc(10px + var(--control-corner-radius));
+    z-index: -1;
+}
+
+.combo-box.open .combo-box-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.combo-box-option {
+    padding: 4px 8px;
+    border-radius: var(--control-corner-radius);
+    cursor: pointer;
+}
+
+.combo-box-option:hover {
+    background-color: var(--button-background-color);
+    color: var(--focus-color);
+}
+
+.combo-box-option:active {
+    background-color: transparent;
+    color: var(--text-color);
+}

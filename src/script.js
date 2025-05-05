@@ -22,3 +22,14 @@ expandersContainer.appendChild(exp2);
 document.getElementById('showPopupButton').addEventListener('click', () => {
     showMessagePopup('Hello, this is a message popup!');
 });
+
+const combobox = document.getElementById('cmbBox');
+combobox.loadOptions([
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' }
+]);
+
+combobox.addEventListener('selectionChanged', (event) => {
+    console.log('Selected item:', event.detail);
+});
