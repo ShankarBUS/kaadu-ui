@@ -82,8 +82,14 @@ class ComboBox extends HTMLElement {
             const optionEl = document.createElement('div');
             optionEl.className = 'combo-box-option';
             optionEl.dataset.value = option.value;
-            optionEl.textContent = option.label;
-            optionEl.addEventListener('click', (e) => this._selectOption(e.target.dataset.value));
+
+            const textSpan = document.createElement('span');
+            textSpan.className = 'combo-box-text';
+            textSpan.textContent = option.label;
+
+            optionEl.title = option.label;
+            optionEl.appendChild(textSpan);
+            optionEl.addEventListener('click', (e) => this._selectOption(optionEl.dataset.value));
             this.dropdown.appendChild(optionEl);
         });
     }

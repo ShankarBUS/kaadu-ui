@@ -1,6 +1,7 @@
 .combo-box {
     position: relative;
     min-width: 120px;
+    max-width: 100%;
 }
 
 .combo-box-button {
@@ -12,10 +13,12 @@
 }
 
 .combo-box-text {
-    flex-grow: 1;
+    display: inline-block;
+    max-width: 100%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    vertical-align: middle;
 }
 
 .combo-box-chevron {
@@ -34,6 +37,7 @@
     left: 0px;
     right: 0px;
     max-height: 200px;
+    overflow-x: hidden;
     overflow-y: auto;
     backdrop-filter: var(--blur-effect);
     display: none;
