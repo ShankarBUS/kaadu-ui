@@ -30,7 +30,7 @@
 
 .combo-box-dropdown {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 4px);
     left: 0px;
     right: 0px;
     max-height: 200px;
@@ -39,14 +39,11 @@
     display: none;
     padding: 10px;
     border: 1px solid var(--border-color);
-    border-top: none;
-    border-radius: 0 0 var(--control-corner-radius) var(--control-corner-radius);
+    border-radius: var(--control-corner-radius);
     background-color: var(--panel-background);
     color: var(--text-color);
     animation: slideDown var(--animation-duration) var(--animation-ease);
-    margin-top: calc(-1 * var(--control-corner-radius));
-    padding-top: calc(10px + var(--control-corner-radius));
-    z-index: -1;
+    z-index: 1000;
 }
 
 .combo-box.open .combo-box-dropdown {

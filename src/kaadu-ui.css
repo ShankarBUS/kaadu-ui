@@ -51,7 +51,7 @@
 
 body {
     font-family: var(--font-family);
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.5;
     color: var(--text-color);
     background: var(--background-color);
@@ -257,6 +257,22 @@ button:active {
     border-color: var(--focus-color);
     color: var(--focus-color);
     background-color: transparent;
+}
+
+input[type="text" i] {
+    padding: 12px;
+    font-family: var(--font-family);
+    font-size: inherit;
+    font-weight: 400;
+    border: 1px solid var(--border-color);
+    border-radius: var(--control-corner-radius);
+    background-color: var(--input-background-color);
+    color: inherit;
+    min-width: 120px;
+}
+
+input[type="text" i]:hover {
+    border-color: var(--focus-color);
 }
 
 .svg-path {
