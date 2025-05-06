@@ -259,8 +259,8 @@ button:active {
     background-color: transparent;
 }
 
-input[type="text" i],
-input[type="number" i] {
+input[type=text],
+input[type=number] {
     padding: 12px;
     font-family: var(--font-family);
     font-size: inherit;
@@ -272,21 +272,51 @@ input[type="number" i] {
     min-width: 120px;
 }
 
-input[type="text" i]:hover,
-input[type="number" i]:hover {
+input[type=text]:hover,
+input[type=number]:hover {
     border-color: var(--focus-color);
 }
 
-input[type="number" i] {
+input[type=number] {
     -moz-appearance: textfield;
     appearance: textfield;
     margin: 0;
 }
 
-input[type="number" i]::-webkit-inner-spin-button,
-input[type="number" i]::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+input[type=file] {
+    font-family: inherit;
+    font-size: inherit;
+    color: transparent;
+}
+
+input[type=file]::file-selector-button {
+    width: 100%;
+    padding: 12px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: inherit;
+    border: 1px solid var(--border-color);
+    background-color: var(--button-background-color);
+    border-radius: var(--control-corner-radius);
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+input[type=file]::file-selector-button:hover {
+    background-color: var(--button-hover-background-color);
+    color: var(--text-color);
+}
+
+input[type=file]::file-selector-button:active {
+    border-color: var(--focus-color);
+    color: var(--focus-color);
+    background-color: transparent;
 }
 
 .svg-path {
