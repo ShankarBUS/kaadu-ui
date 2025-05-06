@@ -121,4 +121,6 @@ export class ComboBox extends HTMLElement {
     }
 }
 
-customElements.define('combo-box', ComboBox);
+if (!customElements.get('combo-box')) {
+    customElements.define('combo-box', ComboBox);
+}
