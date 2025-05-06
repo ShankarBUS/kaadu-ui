@@ -130,8 +130,8 @@ export function setupMessagePopup() {
     const popupText = document.createElement('p');
     popupText.id = 'popupText';
 
-    popupContent.appendChild(closePopup);
     popupContent.appendChild(popupText);
+    popupContent.appendChild(closePopup);
     messagePopup.appendChild(popupContent);
     document.body.appendChild(messagePopup);
 
