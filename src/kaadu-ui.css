@@ -259,7 +259,8 @@ button:active {
     background-color: transparent;
 }
 
-input[type="text" i] {
+input[type="text" i],
+input[type="number" i] {
     padding: 12px;
     font-family: var(--font-family);
     font-size: inherit;
@@ -271,8 +272,21 @@ input[type="text" i] {
     min-width: 120px;
 }
 
-input[type="text" i]:hover {
+input[type="text" i]:hover,
+input[type="number" i]:hover {
     border-color: var(--focus-color);
+}
+
+input[type="number" i] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+    margin: 0;
+}
+
+input[type="number" i]::-webkit-inner-spin-button,
+input[type="number" i]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .svg-path {
@@ -570,6 +584,7 @@ footer a:hover {
         opacity: 0;
         transform: translateY(-10%);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);

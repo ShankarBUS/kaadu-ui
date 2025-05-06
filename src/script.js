@@ -1,4 +1,5 @@
 import { enableStickyHeader, enableHamburgerMenu, createExpander, setupMessagePopup, showMessagePopup, createKeyValueTable } from './kaadu-ui.js';
+import { ComboBox } from './combo-box.js';
 
 enableStickyHeader();
 enableHamburgerMenu();
