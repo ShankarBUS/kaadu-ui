@@ -497,6 +497,10 @@ footer button:hover .svg-path {
     gap: 10px;
 }
 
+.expander-open .expander-button {
+    border-radius: var(--control-corner-radius) var(--control-corner-radius) 0px 0px;
+}
+
 .expander-item-content {
     display: none;
     padding: 10px;
@@ -506,10 +510,11 @@ footer button:hover .svg-path {
     background-color: var(--panel-background);
     color: var(--text-color);
     animation: slideDown var(--animation-duration) var(--animation-ease);
-    margin-top: calc(-1 * var(--control-corner-radius));
-    padding-top: calc(10px + var(--control-corner-radius));
     position: relative;
-    z-index: -1;
+}
+
+.expander-open .expander-item-content {
+    display: block;
 }
 
 .badge-area {

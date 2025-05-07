@@ -39,7 +39,7 @@ export function enableHamburgerMenu() {
  * @param {string} buttonClass - Additional CSS class to style the button.
  * @returns {HTMLElement} - The created expander element containing the button and panel.
  */
-export function createExpander(buttonContents, panelContent, buttonClass) {
+export function createExpander(buttonContents, panelContent, buttonClass = '') {
     const content = document.createElement('div');
     content.className = 'expander-item-content';
     content.appendChild(panelContent);
@@ -50,7 +50,7 @@ export function createExpander(buttonContents, panelContent, buttonClass) {
         button.appendChild(e);
     });
     button.addEventListener('click', () => {
-        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        item.classList.toggle('expander-open');
     });
 
     const item = document.createElement('div');
