@@ -8,17 +8,11 @@ let footer = null;
 function handleScroll() {
     document.body.classList.remove('nav-open');
     const currentScroll = window.pageYOffset;
-    if (currentScroll > headerOffset) {
-        header.classList.add("sticky-header");
-    } else {
-        header.classList.remove("sticky-header");
-    }
 
-    if (currentScroll >  document.body.scrollHeight - window.innerHeight - footer.offsetHeight) {
-        footer.classList.remove("floating-footer");
-    } else {
-        footer.classList.add("floating-footer");
-    }
+    if (header) header.classList.toggle("sticky-header", currentScroll > headerOffset);
+
+    if (footer) footer.classList.toggle("floating-footer",
+        currentScroll < document.body.scrollHeight - window.innerHeight - footer.offsetHeight);
 }
 
 /**
@@ -45,7 +39,7 @@ export function enableFloatingFooter() {
     mainContent.style.paddingBottom = `${footerHeight}px`;
 
     let footerOffset = document.body.scrollHeight - window.innerHeight - footerHeight
-    if (window.pageYOffset < footerOffset) footer.classList.add("floating-footer"); 
+    if (window.pageYOffset < footerOffset) footer.classList.add("floating-footer");
     if (!scrollListening) {
         window.addEventListener("scroll", handleScroll);
         scrollListening = true;
