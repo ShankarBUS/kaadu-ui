@@ -1,19 +1,55 @@
+// Kaadu UI JavaScript Module
+
+let scrollListening = false;
+let header = null;
+let headerOffset = 0;
+let footer = null;
+
+function handleScroll() {
+    document.body.classList.remove('nav-open');
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > headerOffset) {
+        header.classList.add("sticky-header");
+    } else {
+        header.classList.remove("sticky-header");
+    }
+
+    if (currentScroll >  document.body.scrollHeight - window.innerHeight - footer.offsetHeight) {
+        footer.classList.remove("floating-footer");
+    } else {
+        footer.classList.add("floating-footer");
+    }
+}
+
 /**
  * Enables a sticky header that becomes fixed after scrolling past a certain offset.
  * @param {number} [offset=50] - The scroll offset after which the header becomes sticky.
  */
 export function enableStickyHeader(offset = 50) {
-    const header = document.getElementById("header");
+    header = document.getElementById("pageHeader");
     document.documentElement.style.scrollPaddingTop = `${offset + 60}px`;
-    window.addEventListener("scroll", () => {
-        document.body.classList.remove('nav-open');
-        const currentScroll = window.pageYOffset;
-        if (currentScroll > offset) {
-            header.classList.add("sticky");
-        } else {
-            header.classList.remove("sticky");
-        }
-    });
+    headerOffset = offset;
+    if (!scrollListening) {
+        window.addEventListener("scroll", handleScroll);
+        scrollListening = true;
+    }
+}
+
+/**
+ * Enables a floating footer that becomes fixed at the bottom of the viewport when scrolling.
+ */
+export function enableFloatingFooter() {
+    footer = document.getElementById("pageFooter");
+    const footerHeight = footer.offsetHeight;
+    const mainContent = document.getElementById("main");
+    mainContent.style.paddingBottom = `${footerHeight}px`;
+
+    let footerOffset = document.body.scrollHeight - window.innerHeight - footerHeight
+    if (window.pageYOffset < footerOffset) footer.classList.add("floating-footer"); 
+    if (!scrollListening) {
+        window.addEventListener("scroll", handleScroll);
+        scrollListening = true;
+    }
 }
 
 /**

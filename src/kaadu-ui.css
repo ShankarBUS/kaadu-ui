@@ -13,7 +13,7 @@
     --text-color: #333;
     --alt-text-color: #f3f3f3;
     --panel-background: #ffffffaa;
-    --border-color: #ccc;
+    --border-color: #cccccccc;
     --input-background-color: white;
     --button-background-color: #f1f1f1;
     --button-hover-background-color: #dfdfdf;
@@ -32,7 +32,7 @@
         --text-color: #f3f3f3;
         --alt-text-color: #333;
         --panel-background: #1e1e1ecc;
-        --border-color: #555;
+        --border-color: #55555555;
         --input-background-color: #2d2d2d;
         --button-background-color: #2d2d2d;
         --button-hover-background-color: #3a3a3a;
@@ -96,7 +96,7 @@ body.popup-open {
     text-align: center;
 }
 
-.sticky {
+.sticky-header {
     position: fixed;
     top: 20px;
     left: 20px;
@@ -327,10 +327,6 @@ button:active .svg-path {
     fill: var(--focus-color);
 }
 
-footer button:hover .svg-path {
-    fill: var(--focus-color);
-}
-
 #main {
     position: relative;
     padding: 20px;
@@ -474,11 +470,13 @@ footer button:hover .svg-path {
 .card:hover {
     background-color: var(--button-hover-background-color);
     border-color: var(--focus-color);
+    box-shadow: 0px 10px 10px var(--smoke-background-color);
 }
 
 .card:active {
     background-color: transparent;
     border-color: var(--focus-color);
+    box-shadow: none;
 }
 
 .card h4 {
@@ -591,13 +589,56 @@ footer button:hover .svg-path {
     animation: indeterminateAnimation 1.5s infinite linear;
 }
 
-footer a {
+.page-footer {
+    display: flex;
+    position: absolute;
+    gap: 8px;
+    padding: 8px;
+    right: 0px;
+    text-align: right;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid transparent;
+}
+
+.floating-footer {
+    position: fixed;
+    background: var(--panel-background);
+    backdrop-filter: var(--blur-effect);
+    border: 1px solid var(--border-color);
+    bottom: 8px;
+    border-radius: var(--control-corner-radius);
+    right: 8px;
+}
+
+.page-footer p {
+    margin: 0px 8px;
+}
+
+.page-footer a {
     padding: unset;
     border-radius: unset;
 }
 
-footer a:hover {
+.page-footer a:hover {
     background-color: unset;
+}
+
+.page-footer button:hover .svg-path {
+    fill: var(--focus-color);
+}
+
+.footer-button {
+    padding: 8px;
+    height: 42px;
+    width: 42px;
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+.footer-img {
+    background-color: #0e0e0e;
+    border-radius: 12px;
 }
 
 @keyframes indeterminateAnimation {

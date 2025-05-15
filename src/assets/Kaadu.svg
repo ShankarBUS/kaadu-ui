@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Color" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 1024">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-5);
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="306.88" y1="701.07" x2="856.65" y2="701.07" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00a651"/>
+      <stop offset="1" stop-color="#9acd32"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="475.72" y1="-42.1" x2="475.72" y2="246.74" gradientTransform="translate(0 758.43) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00a651"/>
+      <stop offset="1" stop-color="#643c19"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="306.88" y1="322.93" x2="856.65" y2="322.93" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1e90ff"/>
+      <stop offset="1" stop-color="#6cf"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="633.21" y1="205.21" x2="294.29" y2="519.36" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1e90ff"/>
+      <stop offset="1" stop-color="#643c19"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-5" x1="223.86" y1="152" x2="223.86" y2="872" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a97c50"/>
+      <stop offset="1" stop-color="#643c19"/>
+    </linearGradient>
+  </defs>
+  <path id="Lower_Leaf" data-name="Lower Leaf" class="cls-5" d="M306.88,530.14c114.77,365.58,327.12,330.43,549.77,341.86-238.26-182.44-130.47-340.47-549.77-341.86Z"/>
+  <path id="Lower_Stalk" data-name="Lower Stalk" class="cls-1" d="M280.37,544.48c134.65,43.26,90.7,112.33,390.7,256.05-267.91-151.74-232.33-229.53-390.7-288.84v32.79Z"/>
+  <path id="Upper_Leaf" data-name="Upper Leaf" class="cls-3" d="M306.88,493.86c114.77-365.58,327.12-330.43,549.77-341.86-238.26,182.44-130.47,340.47-549.77,341.86Z"/>
+  <path id="Upper_Stalk" data-name="Upper Stalk" class="cls-2" d="M280.37,479.21c134.65-43.26,90.7-112.33,390.7-256.05-267.91,151.74-232.33,229.53-390.7,288.84v-32.79Z"/>
+  <path id="Branch" class="cls-4" d="M247.81,872h-47.91c-17.98,0-32.56-14.58-32.56-32.56V184.56c0-17.98,14.58-32.56,32.56-32.56h47.91c17.98,0,32.56,14.58,32.56,32.56v654.88c0,17.98-14.58,32.56-32.56,32.56Z"/>
+</svg>

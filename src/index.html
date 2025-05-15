@@ -5,23 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kaadu UI</title>
+    <link rel="icon" type="image/svg+xml" href="assets/Kaadu.svg">
     <link rel="stylesheet" href="kaadu-ui.css">
+    <style>
+        @media (min-width: 1024px) {
+            #main {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .column-2 {
+                grid-column: span 2;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <div class="dotted-background"></div>
     <div class="overlay-background"></div>
     <div id="smokeBackground" class="nav-smoke-background"></div>
-    <header id="header" class="page-header">
-        <button class="hamburger" id="hamburgerMenu">
+    <header id="pageHeader" class="page-header">
+        <button role="button" class="hamburger" id="hamburgerMenu">
             <div></div>
             <div></div>
             <div></div>
         </button>
+        <img src="assets/Kaadu.svg" height="32px" width="32px" />
         <label>Kaadu UI</label>
         <nav id="navBar" class="navbar">
             <ul id="navList" class="navlist">
-                <li><a href="#Introduction">Introduction</a></li>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#styled-controls">Styled Controls</a></li>
+                <li><a href="#custom-controls">Custom Controls</a></li>
             </ul>
         </nav>
     </header>
@@ -29,18 +44,121 @@
         <div class="column">
             <div class="group">
                 <h2 id="intro">Introduction</h2>
+                <img src="assets/Kaadu.svg" style="align-self: center; max-width: 100%; max-height: 256px;" />
                 <div class="sub-group">
-                    <h3>Popups</h3>
-                    <button id="showPopupButton">Show Popup</button>
+                    <h3>About Kaadu UI</h3>
+                    <p><strong>Kaadu UI</strong> is a theme-aware, nature-inspired UI design system. It features blur
+                        effects, console-style typography, and components with green aesthetics. The system is designed
+                        for clarity, accessibility, and a modern look, making it ideal for applications that want a
+                        fresh, natural feel.</p>
+                    <p>Its purpose is to provide a consistent, visually appealing set of controls and layouts that adapt
+                        to both light and dark themes, with a focus on usability and style.</p>
+                </div>
+                <div class="sub-group">
+                    <h3>Usage</h3>
+                    <p>For comprehensive setup and usage instructions, please visit the <a
+                            href="https://github.com/ShankarBUS/kaadu-ui" target="_blank" rel="noopener">GitHub Repo</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="column column-2">
+            <div class="group">
+                <h3 id="styled-controls">Styled Controls</h3>
+                <div class="sub-group">
+                    <h3>Text Box</h3>
+                    <p>Styled with rounded corners, subtle borders, and background color that adapts to the theme.
+                        Focused state highlights the border in green.</p>
+                    <input type="text" placeholder="Type something">
+                </div>
+                <div class="sub-group">
+                    <h3>Number Box</h3>
+                    <p>Similar to the text box, but for numeric input. No spinner controls for a clean look. Focused
+                        state uses the theme's green color.</p>
+                    <input type="number" placeholder="Type a number">
+                </div>
+                <div class="sub-group">
+                    <h3>Button</h3>
+                    <p>Buttons have a soft background, rounded corners, and bold font. Hover and active states use green
+                        highlights for feedback.</p>
+                    <button role="button">Button</button>
+                </div>
+                <div class="sub-group">
+                    <h3>Link</h3>
+                    <p>Links are styled with green color and rounded background on hover, blending with the theme.
+                        Active state dims the color.</p>
+                    <a href="#" onclick="return false;">Link example</a>
+                </div>
+                <div class="sub-group">
+                    <h3>Timeline List</h3>
+                    <p>The timeline list visually represents sequential stages or events, styled with a vertical line
+                        and highlighted markers for each step. It is ideal for showing progressions, processes, or life
+                        cycles in a clear, accessible format.</p>
+                    <p><strong>Example: Evolution of Plants</strong></p>
+                    <ul class="timeline-list">
+                        <li>Single-celled Algae: Origin of photosynthetic life</li>
+                        <li>Multicellular Algae: Simple colonies and filaments</li>
+                        <li>Bryophytes: First land plants (mosses, liverworts)</li>
+                        <li>Pteridophytes: Vascular plants (ferns, horsetails)</li>
+                        <li>Gymnosperms: Seed plants without flowers (conifers, cycads)</li>
+                        <li>Angiosperms: Flowering plants with enclosed seeds</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="group">
+                <h3 id="custom-controls">Custom Controls</h3>
+                <div class="sub-group">
+                    <h3>Combo Box</h3>
+                    <p>The combo box features a modern dropdown with blur and green highlights. Options are styled for
+                        clarity and accessibility.</p>
+                    <combo-box id="cmbBox" placeholder="Select a tree" style="width: 100%;"></combo-box>
+                </div>
+                <div class="sub-group">
+                    <h3>Expander</h3>
+                    <p>Expanders are collapsible panels with animated transitions, rounded corners, and a clean, modern
+                        look. The header uses bold text and the panel background adapts to the theme.</p>
                     <div id="expandersContainer" class="cards-grid"></div>
-                    <combo-box id="cmbBox"></combo-box>
-                    <input type="text" placeholder="Placeholder"></input>
-                    <input type="number" placeholder="Placeholder"></input>
+                </div>
+                <div class="sub-group">
+                    <h3>Popup</h3>
+                    <p>Popups use a blurred, semi-transparent background overlay and a centered panel with rounded
+                        corners. The popup content is clearly separated and accessible.</p>
+                    <button role="button" id="showPopupButton">Show Popup</button>
+                </div>
+                <div class="sub-group">
+                    <h3>Cards</h3>
+                    <p>Cards are distinct, clickable containers with rounded corners and adaptive backgrounds. They are
+                        perfect for organizing related content, presenting information, or grouping actions in a visually
+                        appealing and accessible way.</p>
+                    <div id="cardsGrid" class="cards-grid"></div>
+                </div>
+                <div class="sub-group">
+                    <h3>Loading Progressbar</h3>
+                    <p>The loading progress bar offers a clear, animated indication of ongoing activity. Its smooth green
+                        highlights integrate with the theme, making progress easy to notice without being distracting.
+                        This ensures users always know when something is loading.</p>
+                    <div class="loading-progress-bar" style="display: block; position: relative;"></div>
                 </div>
             </div>
         </div>
     </div>
+    <footer id="pageFooter" class="page-footer">
+        <button class="footer-button" role="button">
+            <a href="https://github.com/ShankarBUS/kaadu-ui" target="_blank" aria-label="Visit our GitHub repository">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 98 98">
+                    <path class="svg-path" fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"></path>
+                </svg>
+            </a>
+        </button>
+        <button class="footer-button" role="button">
+            <a href="https://shankarbus.github.io/" target="_blank">
+                <img class="footer-img" src="https://avatars.githubusercontent.com/ShankarBUS" width="24px" height="24px">
+            </a>
+        </button>
+        <p>© ShankarBUS</p>
+    </footer>
 </body>
 <script type="module" src="script.js"></script>
 <script type="module" src="combo-box.js"></script>
+
 </html>
