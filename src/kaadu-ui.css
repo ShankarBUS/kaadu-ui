@@ -260,7 +260,10 @@ button:active {
 }
 
 input[type=text],
-input[type=number] {
+input[type=number],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local] {
     padding: 12px;
     font-family: var(--font-family);
     font-size: inherit;
@@ -317,6 +320,10 @@ input[type=file]::file-selector-button:active {
     border-color: var(--focus-color);
     color: var(--focus-color);
     background-color: transparent;
+}
+
+:focus-visible {
+  outline: 1px solid var(--focus-color);
 }
 
 .svg-path {
