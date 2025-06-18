@@ -1,0 +1,42 @@
+.radial-progress-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.radial-progress-svg {
+  width: 100px;
+  height: 100px;
+  transform: rotate(-90deg);
+}
+
+.radial-progress-circle-bg {
+  fill: none;
+  stroke: var(--background-color);
+  stroke-width: 2;
+}
+
+.radial-progress-circle {
+  fill: none;
+  stroke: var(--focus-color);
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--animation-duration) var(--animation-ease);
+}
+
+.radial-progress-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

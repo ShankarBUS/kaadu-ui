@@ -1,5 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/cascadia-code');
 @import url('combo-box.css');
+@import url('radial-progress.css');
 
 :root {
     --control-corner-radius: 8px;

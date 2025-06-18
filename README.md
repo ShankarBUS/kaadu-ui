@@ -20,6 +20,7 @@ Its purpose is to provide a consistent, visually appealing set of controls and l
   - Buttons and links
   - Timeline lists
   - Combo box (custom dropdown)
+  - Radial progress (circular progress indicator)
   - Expanders (collapsible panels)
   - Popups
   - Cards
@@ -34,6 +35,7 @@ Its purpose is to provide a consistent, visually appealing set of controls and l
     - https://shankarbus.github.io/kaadu-ui/kaadu-ui.css
     - https://shankarbus.github.io/kaadu-ui/kaadu-ui.js
     - https://shankarbus.github.io/kaadu-ui/combo-box.js
+    - https://shankarbus.github.io/kaadu-ui/radial-progress.js
 
 ### 2. Basic HTML Template
 
@@ -49,6 +51,7 @@ Here is a minimal template to get started:
     <link rel="stylesheet" href="https://shankarbus.github.io/kaadu-ui/kaadu-ui.css">
     <script type="module" src="https://shankarbus.github.io/kaadu-ui/kaadu-ui.js"></script>
     <script type="module" src="https://shankarbus.github.io/kaadu-ui/combo-box.js"></script>
+    <script type="module" src="https://shankarbus.github.io/kaadu-ui/radial-progress.js"></script>
 </head>
 <body>
     <div class="dotted-background"></div>
@@ -100,6 +103,12 @@ const data = [
   { value: 'OPT2', label: 'Option 2' },
 ];
 document.getElementById('cmbBox').loadOptions(data);
+```
+
+### Radial Progress
+
+```html
+<radial-progress id="radialProgress" value="75" max="100" label="75%" color="red" size="100px"></radial-progress>
 ```
 
 #### Expander
@@ -201,6 +210,29 @@ combo.addEventListener('selectionChanged', e => {
   console.log('Selected:', e.detail);
 });
 ```
+
+### `radial-progress.js`
+
+- **RadialProgress**: Custom element `<radial-progress>` for a circular progress indicator.
+  - **Attributes:**
+    - `value` (number): Progress value (0-`max`).
+    - `max` (number, optional): Maximum value (default: 100).
+    - `label` (string, optional): Text label shown in the center.
+    - `color` (string, optional): Stroke color of the progress arc (default: Focus color).
+    - `size` (string, optional): Size of the component (e.g., `80px`).
+  - **Properties:**
+    - `.value`, `.max`, `.label`, `.color`, `.size` (getters/setters for the above attributes)
+  - **Usage Example:**
+    ```html
+    <radial-progress value="75" max="100" label="75%" color="red" size="100px"></radial-progress>
+    ```
+    ```js
+    const rp = document.getElementById('radialProgress');
+    rp.value = 90;
+    rp.label = '90%';
+    rp.color = 'dodgerblue';
+    rp.size = '120px';
+    ```
 
 ## Styling
 
