@@ -14,16 +14,16 @@
 
 .radial-progress-circle-bg {
   fill: none;
-  stroke: var(--background-color);
+  stroke: var(--c-bg);
   stroke-width: 2;
 }
 
 .radial-progress-circle {
   fill: none;
-  stroke: var(--focus-color);
+  stroke: var(--c-accent);
   stroke-width: 3;
   stroke-linecap: round;
-  transition: stroke-dashoffset var(--animation-duration) var(--animation-ease);
+  transition: stroke-dashoffset var(--t-med) ease;
 }
 
 .radial-progress-label {

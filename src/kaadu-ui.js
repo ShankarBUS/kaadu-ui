@@ -3,16 +3,12 @@
 let scrollListening = false;
 let header = null;
 let headerOffset = 0;
-let footer = null;
 
 function handleScroll() {
-    document.body.classList.remove('nav-open');
-    const currentScroll = window.pageYOffset;
+  const currentScroll = window.pageYOffset;
 
-    if (header) header.classList.toggle("sticky-header", currentScroll > headerOffset);
-
-    if (footer) footer.classList.toggle("floating-footer",
-        currentScroll < document.body.scrollHeight - window.innerHeight - footer.offsetHeight);
+  if (header)
+    header.classList.toggle("sticky", currentScroll > headerOffset);
 }
 
 /**
@@ -20,46 +16,13 @@ function handleScroll() {
  * @param {number} [offset=50] - The scroll offset after which the header becomes sticky.
  */
 export function enableStickyHeader(offset = 50) {
-    header = document.getElementById("pageHeader");
-    document.documentElement.style.scrollPaddingTop = `${offset + 60}px`;
-    headerOffset = offset;
-    if (!scrollListening) {
-        window.addEventListener("scroll", handleScroll);
-        scrollListening = true;
-    }
-}
-
-/**
- * Enables a floating footer that becomes fixed at the bottom of the viewport when scrolling.
- */
-export function enableFloatingFooter() {
-    footer = document.getElementById("pageFooter");
-    const footerHeight = footer.offsetHeight;
-    const mainContent = document.getElementById("main");
-    mainContent.style.paddingBottom = `${footerHeight}px`;
-
-    let footerOffset = document.body.scrollHeight - window.innerHeight - footerHeight
-    if (window.pageYOffset < footerOffset) footer.classList.add("floating-footer");
-    if (!scrollListening) {
-        window.addEventListener("scroll", handleScroll);
-        scrollListening = true;
-    }
-}
-
-/**
- * Enables a hamburger menu that toggles the visibility of the navigation menu.
- */
-export function enableHamburgerMenu() {
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const smokeBackground = document.getElementById('smokeBackground');
-
-    hamburgerMenu.addEventListener('click', () => {
-        document.body.classList.toggle('nav-open');
-    });
-
-    smokeBackground.addEventListener('click', () => {
-        document.body.classList.remove('nav-open');
-    });
+  header = document.getElementById("header");
+  document.documentElement.style.scrollPaddingTop = `${offset + 60}px`;
+  headerOffset = offset;
+  if (!scrollListening) {
+    window.addEventListener("scroll", handleScroll);
+    scrollListening = true;
+  }
 }
 
 /**
@@ -69,25 +32,25 @@ export function enableHamburgerMenu() {
  * @param {string} buttonClass - Additional CSS class to style the button.
  * @returns {HTMLElement} - The created expander element containing the button and panel.
  */
-export function createExpander(buttonContents, panelContent, buttonClass = '') {
-    const content = document.createElement('div');
-    content.className = 'expander-item-content';
-    content.appendChild(panelContent);
+export function createExpander(buttonContents, panelContent, buttonClass = "") {
+  const content = document.createElement("div");
+  content.className = "expander-content";
+  content.appendChild(panelContent);
 
-    const button = document.createElement('button');
-    button.className = `expander-button ${buttonClass}`;
-    buttonContents.forEach(e => {
-        button.appendChild(e);
-    });
-    button.addEventListener('click', () => {
-        item.classList.toggle('expander-open');
-    });
+  const button = document.createElement("button");
+  button.className = `expander-button ${buttonClass}`;
+  buttonContents.forEach((e) => {
+    button.appendChild(e);
+  });
+  button.addEventListener("click", () => {
+    exp.classList.toggle("expander-open");
+  });
 
-    const item = document.createElement('div');
-    item.className = 'expander-item';
-    item.appendChild(button);
-    item.appendChild(content);
-    return item;
+  const exp = document.createElement("div");
+  exp.className = "expander";
+  exp.appendChild(button);
+  exp.appendChild(content);
+  return exp;
 }
 
 /**
@@ -97,20 +60,20 @@ export function createExpander(buttonContents, panelContent, buttonClass = '') {
  * @param {HTMLElement} value - The value as an HTML element (displayed in the second cell).
  */
 export function addKeyValueRowToTable(table, label, value) {
-    const row = document.createElement('tr');
+  const row = document.createElement("tr");
 
-    const labelCell = document.createElement('td');
-    labelCell.textContent = label;
-    labelCell.className = 'label-cell';
+  const labelCell = document.createElement("td");
+  labelCell.textContent = label;
+  labelCell.className = "label-cell";
 
-    const valueCell = document.createElement('td');
-    valueCell.appendChild(value);
-    valueCell.className = 'value-cell';
+  const valueCell = document.createElement("td");
+  valueCell.appendChild(value);
+  valueCell.className = "value-cell";
 
-    row.appendChild(labelCell);
-    row.appendChild(valueCell);
-    table.appendChild(row);
-};
+  row.appendChild(labelCell);
+  row.appendChild(valueCell);
+  table.appendChild(row);
+}
 
 /**
  * Creates a table with key-value pairs from a JSON object.
@@ -119,74 +82,92 @@ export function addKeyValueRowToTable(table, label, value) {
  * @returns {HTMLTableElement} - The created table element populated with key-value rows.
  */
 export function createKeyValueTable(obj, valuefun = null) {
-    const infoTable = document.createElement('table');
-    infoTable.className = 'info-table';
+  const infoTable = document.createElement("table");
+  infoTable.className = "info-table";
 
-    for (const [key, val] of Object.entries(obj)) {
-        const label = key.charAt(0).toUpperCase() + key.slice(1); // Capitalize the first letter of the key
+  for (const [key, val] of Object.entries(obj)) {
+    const label = key.charAt(0).toUpperCase() + key.slice(1); // Capitalize the first letter of the key
 
-        let value;
-        if (valuefun) {
-            value = valuefun(val)
-        } else {
-            value = document.createElement('span');
-            value.textContent = val;
-        }
-
-        addKeyValueRowToTable(infoTable, label, value);
+    let value;
+    if (valuefun) {
+      value = valuefun(val);
+    } else {
+      value = document.createElement("span");
+      value.textContent = val;
     }
 
-    return infoTable;
+    addKeyValueRowToTable(infoTable, label, value);
+  }
+
+  return infoTable;
 }
 
 /**
- * Sets up a message popup element in the DOM. The popup includes a close button and a text area for displaying messages.
+ * Creates a basic text message dialog in the DOM.
+ * @param {string} [id=null] - The ID to assign to the dialog element. If not provided, defaults to "messageDialog".
  */
-export function setupMessagePopup() {
-    const messagePopup = document.createElement('div');
-    messagePopup.id = 'messagePopup';
-    messagePopup.className = 'popup';
-    messagePopup.setAttribute('aria-hidden', 'true');
+export function createMessageDialog(id = null) {
+  const messageDialog = document.createElement("dialog");
+  messageDialog.id = id ?? "messageDialog";
+  messageDialog.closedBy = "any";
 
-    const popupContent = document.createElement('div');
-    popupContent.id = 'popupContent';
-    popupContent.className = 'popup-content';
+  const dialogContent = document.createElement("div");
+  dialogContent.className = "modal-content";
 
-    const closePopup = document.createElement('button');
-    closePopup.id = 'closePopup';
-    closePopup.setAttribute('aria-label', 'Close Popup');
-    closePopup.textContent = 'OK';
+  const dialogHeader = document.createElement("div");
+  dialogHeader.className = "modal-header";
 
-    const popupText = document.createElement('p');
-    popupText.id = 'popupText';
+  const dialogTitle = document.createElement("h2");
+  dialogTitle.id = "dialogTitle";
+  dialogHeader.appendChild(dialogTitle);
 
-    popupContent.appendChild(popupText);
-    popupContent.appendChild(closePopup);
-    messagePopup.appendChild(popupContent);
-    document.body.appendChild(messagePopup);
+  const frm = document.createElement("form");
+  frm.method = "dialog";
+  const closeButton = document.createElement("button");
+  closeButton.className = "modal-close";
+  closeButton.value = "cancel";
+  closeButton.setAttribute("aria-label", "Close");
 
-    closePopup.addEventListener('click', () => hideMessagePopup());
+  frm.appendChild(closeButton);
+  dialogHeader.appendChild(frm);
+  dialogContent.appendChild(dialogHeader);
 
-    messagePopup.addEventListener('click', (event) => {
-        if (event.target === messagePopup) hideMessagePopup();
-    });
+  const dialogBody = document.createElement("div");
+  dialogBody.className = "modal-body";
+
+  const text = document.createElement("p");
+  text.id = "dialogText";
+
+  dialogBody.appendChild(text);
+  dialogContent.appendChild(dialogBody);
+
+  messageDialog.appendChild(dialogContent);
+  document.body.appendChild(messageDialog);
 }
 
 /**
- * Displays a message in the popup.
- * @param {string} message - The message to display inside the popup.
+ * Displays a message in the dialog.
+ * @param {string} message - The message to display inside the dialog.
+ * @param {string} [id=null] - The ID of the dialog to show. If not provided, defaults to "messageDialog".
  */
-export function showMessagePopup(message) {
-    const messageText = document.getElementById('popupText');
-    messageText.textContent = message;
-    const messagePopup = document.getElementById('messagePopup');
-    messagePopup.setAttribute('aria-hidden', 'false');
+export function showMessageDialog(message, title = null, id = null) {
+  const msgText = document.getElementById("dialogText");
+  if (msgText) msgText.textContent = message;
+
+  const msgTitle = document.getElementById("dialogTitle");
+  if (title && msgTitle) {
+    msgTitle.textContent = title;
+  }
+
+  const dlg = document.getElementById(id ?? "messageDialog");
+  if (dlg instanceof HTMLDialogElement && !dlg.open) dlg.showModal();
 }
 
 /**
- * Hides the message popup.
+ * Hides the message dialog.
+ * @param {string} [id=null] - The ID of the dialog to hide. If not provided, defaults to "messageDialog".
  */
-export function hideMessagePopup() {
-    const messagePopup = document.getElementById('messagePopup');
-    messagePopup.setAttribute('aria-hidden', 'true');
+export function hideMessageDialog(id = null) {
+  const dlg = document.getElementById(id ?? "messageDialog");
+  if (dlg instanceof HTMLDialogElement && dlg.open) dlg.close();
 }
