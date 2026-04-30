@@ -63,3 +63,13 @@ data.forEach(item => {
   card.textContent = item.label;
   cardsGrid.appendChild(card);
 });
+
+const ghRepoBtn = document.getElementById("ghRepoBtn");
+ghRepoBtn.addEventListener("click", () => {
+  window.open("https://github.com/ShankarBUS/kaadu-ui", "_blank");
+});
+
+const ghProfileBtn = document.getElementById("ghProfileBtn");
+ghProfileBtn.addEventListener("click", () => {
+  window.open("https://github.com/ShankarBUS", "_blank");
+});
