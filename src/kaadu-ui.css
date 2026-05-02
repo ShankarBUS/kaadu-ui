@@ -242,7 +242,6 @@ header {
         flex: 1;
         letter-spacing: 0.5px;
         color: var(--c-text);
-        margin: 0px 8px;
     }
 
     &.sticky {
